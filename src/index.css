@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@theme {
+    --font-goga: Goga, "sans-serif";
+}
+
+@font-face {
+    font-family: Goga;
+    src: local('Goga'),
+    url("assets/fonts/Goga-Regular.otf") format("opentype");
+}
