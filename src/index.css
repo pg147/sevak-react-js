@@ -26,3 +26,7 @@
     src: local('Goga'),
     url("assets/fonts/Goga-Regular.otf") format("opentype");
 }
+
+#taskList::-webkit-scrollbar{
+    display: none;
+}
