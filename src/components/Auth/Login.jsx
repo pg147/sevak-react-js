@@ -33,9 +33,8 @@ function Login() {
     }
 
     return (
-        <div
-            className={"h-fit w-full max-w-[400px] mx-auto border-2 border-[#F5F5F5] flex flex-col space-y-5 p-6 bg-white rounded-4xl box-border"}>
-            <h1 className={"text-2xl font-bold text-center"}>Log into your account</h1>
+        <div className={"h-fit w-full max-w-[400px] mx-auto flex flex-col space-y-5 p-6 bg-tile rounded-4xl box-border"}>
+            <h1 className={"text-2xl font-bold text-center text-heading"}>Log into your account</h1>
 
             {/* Input form for Email and Password */}
             <form onSubmit={handleFormSubmit}>
@@ -43,13 +42,13 @@ function Login() {
                 <div className={"flex flex-col space-y-4 h-fit w-full"}>
                     {/* Email Input */}
                     <div className={"h-fit w-full flex flex-col space-y-2"}>
-                        <label htmlFor={"email"}>Email</label>
+                        <label htmlFor={"email"} className={"text-heading"}>Email</label>
                         <div
                             id={"email"}
                             className={"relative h-fit w-full cursor-pointer"}
                         >
                             {/* Leading icon */}
-                            <Mail01Icon className={"absolute my-auto mx-4 inset-y-0 size-5 pointer-events-none"}/>
+                            <Mail01Icon className={"text-primary absolute my-auto mx-4 inset-y-0 size-5 pointer-events-none"}/>
 
                             {/* Input field */}
                             <input
@@ -57,7 +56,7 @@ function Login() {
                                 type="text"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className={"h-fit w-full outline-none focus:border-black border-2 border-[#F5F5F5] rounded-2xl pl-11 py-3"}
+                                className={"h-fit w-full outline-none text-textInput focus:bg-input focus:border-primary border-[1.5px] border-stroke rounded-2xl pl-11 py-3"}
                                 placeholder={"e.g. kakanattu@gmail.com"}
                             />
                         </div>
@@ -65,29 +64,29 @@ function Login() {
 
                     {/* Password Input */}
                     <div className={"h-fit w-full flex flex-col space-y-2"}>
-                        <label htmlFor={"password"}>Password</label>
+                        <label htmlFor={"password"} className={"text-heading"}>Password</label>
                         <div
                             id={"password"}
                             className={"relative h-fit w-full cursor-pointer"}
                         >
                             {/* Leading icon */}
-                            <LockPasswordIcon className={"absolute my-auto mx-4 inset-y-0 size-5 pointer-events-none"}/>
+                            <LockPasswordIcon className={"text-primary absolute my-auto mx-4 inset-y-0 size-5 pointer-events-none"}/>
 
                             {/* Input field */}
                             <input
                                 required={true}
-                                type="text"
+                                type={showPassword ? "text" : "password"}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className={"h-fit w-full outline-none focus:border-black border-2 border-[#F5F5F5] rounded-2xl pl-11 py-3"}
-                                placeholder={"e.g. kakanattu@gmail.com"}
+                                className={"h-fit w-full outline-none text-textInput focus:bg-input focus:border-primary border-[1.5px] border-stroke rounded-2xl pl-11 py-3"}
+                                placeholder={"Your password"}
                             />
 
                             {/* Conditional trailing icon */}
                             {showPassword ? <ViewIcon onClick={handlePasswordVisibility}
-                                                      className={"absolute mx-4 my-auto right-0 inset-y-0 size-5"}/> :
+                                                      className={"absolute mx-4 my-auto right-0 inset-y-0 size-5 text-textInput"}/> :
                                 <ViewOffIcon onClick={handlePasswordVisibility}
-                                             className={"absolute mx-4 my-auto right-0 inset-y-0 size-5"}/>}
+                                             className={"absolute mx-4 my-auto right-0 inset-y-0 size-5 text-textInput"}/>}
                         </div>
                     </div>
                 </div>
@@ -101,13 +100,13 @@ function Login() {
                     </div>
 
                     {/* Forgot password link */}
-                    <a href="#" className={"font-semibold text-sm"}>Forgot password ?</a>
+                    <a href="#" className={"text-sm text-primary lg:hover:underline"}>Forgot password ?</a>
                 </div>
 
                 {/* Submit Button */}
                 <button
                     type="submit"
-                    className={"cursor-pointer mt-5 w-full h-fit py-3 rounded-2xl bg-black hover:bg-black/80 transition-all duration-300 ease-in-out text-white"}
+                    className={"cursor-pointer mt-5 w-full h-fit py-3 rounded-2xl bg-primary hover:bg-primary/80 transition-all duration-300 ease-in-out text-white"}
                 >
                     Submit
                 </button>
