@@ -3,6 +3,22 @@
 @theme {
     --font-*: initial;
     --font-sans: Goga, "sans-serif";
+
+    --color-background: #1C1C1C;
+    --color-primary: #725DFF;
+    --color-tile: #27292B;
+    --color-input: #302E32;
+    --color-textInput: #87898B;
+    --color-tabs: #434548;
+    --color-stroke: #3D3E40;
+    --color-heading: #FCFDFB;
+
+    --color-newTaskMain: #0C6EFC;
+    --color-failedTaskMain: #DC3445;
+    --color-completedTaskMain: #1EC897;
+    --color-acceptedTaskMain: #FFC006;
+
+    --shadow-intense: 0px 0px 16px rgba(17, 17, 26, 0.1);
 }
 
 @font-face {
