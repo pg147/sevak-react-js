@@ -7,18 +7,34 @@ import {LockPasswordIcon, Mail01Icon, ViewIcon, ViewOffIcon} from "hugeicons-rea
 function Login() {
     const [showPassword, setShowPassword] = useState(false);
 
+    // Form fields states
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
     // Function to handle the password visibility
     const handlePasswordVisibility = () => {
         setShowPassword(!showPassword);
     }
 
     // Function to handle form submit
-    const handleFormSubmit = () => {
+    const handleFormSubmit = (e) => {
+        e.preventDefault();  // preventing default behaviour
 
+        const formData = {
+            email: email,
+            password: password
+        }
+
+        console.log(formData); // temp
+
+        // Cleanup
+        setEmail("");
+        setPassword("");
     }
 
     return (
-        <div className={"h-fit w-full max-w-[400px] mx-auto border-2 border-[#F5F5F5] flex flex-col space-y-5 p-6 bg-white rounded-4xl box-border"}>
+        <div
+            className={"h-fit w-full max-w-[400px] mx-auto border-2 border-[#F5F5F5] flex flex-col space-y-5 p-6 bg-white rounded-4xl box-border"}>
             <h1 className={"text-2xl font-bold text-center"}>Log into your account</h1>
 
             {/* Input form for Email and Password */}
@@ -30,15 +46,18 @@ function Login() {
                         <label htmlFor={"email"}>Email</label>
                         <div
                             id={"email"}
-                            className={"relative h-fit w-full border-2 border-[#F5F5F5] rounded-2xl flex items-center px-4 py-3 cursor-pointer"}
+                            className={"relative h-fit w-full cursor-pointer"}
                         >
                             {/* Leading icon */}
-                            <Mail01Icon className={"size-5 pointer-events-none"}/>
+                            <Mail01Icon className={"absolute my-auto mx-4 inset-y-0 size-5 pointer-events-none"}/>
 
                             {/* Input field */}
                             <input
+                                required={true}
                                 type="text"
-                                className={"ml-3 h-fit w-full outline-none"}
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className={"h-fit w-full outline-none focus:border-black border-2 border-[#F5F5F5] rounded-2xl pl-11 py-3"}
                                 placeholder={"e.g. kakanattu@gmail.com"}
                             />
                         </div>
@@ -49,23 +68,26 @@ function Login() {
                         <label htmlFor={"password"}>Password</label>
                         <div
                             id={"password"}
-                            className={"relative h-fit w-full border-2 border-[#F5F5F5] rounded-2xl flex items-center justify-between py-3 px-4 cursor-pointer"}
+                            className={"relative h-fit w-full cursor-pointer"}
                         >
-                            <div className={"flex items-center"}>
-                                {/* Leading Icon */}
-                                <LockPasswordIcon className={"size-5 pointer-events-none"}/>
+                            {/* Leading icon */}
+                            <LockPasswordIcon className={"absolute my-auto mx-4 inset-y-0 size-5 pointer-events-none"}/>
 
-                                {/* Input field */}
-                                <input
-                                    type={showPassword ? "text" : "password"}
-                                    className={"w-full ml-3 outline-none bg-transparent"}
-                                    placeholder={"Your password"}
-                                />
-                            </div>
+                            {/* Input field */}
+                            <input
+                                required={true}
+                                type="text"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className={"h-fit w-full outline-none focus:border-black border-2 border-[#F5F5F5] rounded-2xl pl-11 py-3"}
+                                placeholder={"e.g. kakanattu@gmail.com"}
+                            />
 
                             {/* Conditional trailing icon */}
-                            {showPassword ? <ViewIcon onClick={handlePasswordVisibility} className={"size-5"}/> :
-                                <ViewOffIcon onClick={handlePasswordVisibility} className={"size-5"}/>}
+                            {showPassword ? <ViewIcon onClick={handlePasswordVisibility}
+                                                      className={"absolute mx-4 my-auto right-0 inset-y-0 size-5"}/> :
+                                <ViewOffIcon onClick={handlePasswordVisibility}
+                                             className={"absolute mx-4 my-auto right-0 inset-y-0 size-5"}/>}
                         </div>
                     </div>
                 </div>
@@ -83,10 +105,13 @@ function Login() {
                 </div>
 
                 {/* Submit Button */}
-                <button type="submit" className={"cursor-pointer mt-5 w-full h-fit py-3 rounded-2xl bg-black hover:bg-black/80 transition-all duration-300 ease-in-out text-white"}>Submit
+                <button
+                    type="submit"
+                    className={"cursor-pointer mt-5 w-full h-fit py-3 rounded-2xl bg-black hover:bg-black/80 transition-all duration-300 ease-in-out text-white"}
+                >
+                    Submit
                 </button>
             </form>
-
         </div>
     );
 }
